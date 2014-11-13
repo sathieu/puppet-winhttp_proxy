@@ -1,0 +1,14 @@
+{
+  "name": "sathieu-winhttp_proxy",
+  "version": "0.1.0",
+  "author": "Mathieu Parent <math.parent@gmail.com>",
+  "summary": "Manage Windows system proxy (i.e. WinHTTP Proxy) settings",
+  "license": "Apache 2.0",
+  "source": "https://github.com/sathieu/puppet-winhttp_proxy/",
+  "project_page": "https://github.com/sathieu/puppet-winhttp_proxy/",
+  "issues_url": "https://github.com/sathieu/puppet-winhttp_proxy/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
