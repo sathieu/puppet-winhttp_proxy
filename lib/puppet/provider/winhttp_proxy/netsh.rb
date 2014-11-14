@@ -19,7 +19,7 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh) do
     proxy = {
       'ensure' => :absent
     }
-    cmd = [ command(:netsh), 'winhttp', 'dump' ]
+    cmd = [ 'cmd.exe', '/c', command(:netsh), 'winhttp', 'dump' ]
     if Puppet::PUPPETVERSION.to_f < 3.4
       raw, status = Puppet::Util::SUIDManager.run_and_capture(cmd)
     else
@@ -98,7 +98,7 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh) do
   end
 
   def flush
-    cmd = [ command(:netsh), 'winhttp', 'set', 'proxy', 'proxy-server="%s"' % @property_hash[:proxy_server], 'bypass-list="%s"' % @property_hash[:bypass_list] ]
+    cmd = [ 'cmd.exe', '/c', command(:netsh), 'winhttp', 'set', 'proxy', 'proxy-server="%s"' % @property_hash[:proxy_server], 'bypass-list="%s"' % @property_hash[:bypass_list] ]
     if Puppet::PUPPETVERSION.to_f < 3.4
       raw, status = Puppet::Util::SUIDManager.run_and_capture(cmd)
     else

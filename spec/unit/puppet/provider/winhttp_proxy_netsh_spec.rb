@@ -28,9 +28,9 @@ popd
 
       EOS
       if Puppet::PUPPETVERSION.to_f < 3.4
-        Puppet::Util::SUIDManager.expects(:run_and_capture).with(['netsh', 'winhttp', 'dump']).at_least_once.returns([output, 0])
+        Puppet::Util::SUIDManager.expects(:run_and_capture).with(['cmd.exe', '/c', 'netsh', 'winhttp', 'dump']).at_least_once.returns([output, 0])
       else
-        Puppet::Util::Execution.expects(:execute).with(['netsh', 'winhttp', 'dump']).at_least_once.returns(
+        Puppet::Util::Execution.expects(:execute).with(['cmd.exe', '/c', 'netsh', 'winhttp', 'dump']).at_least_once.returns(
           Puppet::Util::Execution::ProcessOutput.new(output, 0)
         )
       end
@@ -62,9 +62,9 @@ popd
 
     it 'should create an instance' do
       if Puppet::PUPPETVERSION.to_f < 3.4
-        Puppet::Util::SUIDManager.expects(:run_and_capture).with(['netsh', 'winhttp', 'set', 'proxy', 'proxy-server="localproxy:3128"', 'bypass-list=""']).once.returns(['', 0])
+        Puppet::Util::SUIDManager.expects(:run_and_capture).with(['cmd.exe', '/c', 'netsh', 'winhttp', 'set', 'proxy', 'proxy-server="localproxy:3128"', 'bypass-list=""']).once.returns(['', 0])
       else
-        Puppet::Util::Execution.expects(:execute).with(['netsh', 'winhttp', 'set', 'proxy', 'proxy-server="localproxy:3128"', 'bypass-list=""']).once.returns(
+        Puppet::Util::Execution.expects(:execute).with(['cmd.exe', '/c', 'netsh', 'winhttp', 'set', 'proxy', 'proxy-server="localproxy:3128"', 'bypass-list=""']).once.returns(
           Puppet::Util::Execution::ProcessOutput.new("", 0)
         )
       end
@@ -97,9 +97,9 @@ popd
       EOS
 
       if Puppet::PUPPETVERSION.to_f < 3.4
-        Puppet::Util::SUIDManager.expects(:run_and_capture).with(['netsh', 'winhttp', 'dump']).at_least_once.returns([output, 0])
+        Puppet::Util::SUIDManager.expects(:run_and_capture).with(['cmd.exe', '/c', 'netsh', 'winhttp', 'dump']).at_least_once.returns([output, 0])
       else
-        Puppet::Util::Execution.expects(:execute).with(['netsh', 'winhttp', 'dump']).at_least_once.returns(
+        Puppet::Util::Execution.expects(:execute).with(['cmd.exe', '/c', 'netsh', 'winhttp', 'dump']).at_least_once.returns(
           Puppet::Util::Execution::ProcessOutput.new(output, 0)
         )
       end
@@ -149,9 +149,9 @@ popd
       EOS
 
       if Puppet::PUPPETVERSION.to_f < 3.4
-        Puppet::Util::SUIDManager.expects(:run_and_capture).with(['netsh', 'winhttp', 'dump']).at_least_once.returns([output, 0])
+        Puppet::Util::SUIDManager.expects(:run_and_capture).with(['cmd.exe', '/c', 'netsh', 'winhttp', 'dump']).at_least_once.returns([output, 0])
       else
-        Puppet::Util::Execution.expects(:execute).with(['netsh', 'winhttp', 'dump']).at_least_once.returns(
+        Puppet::Util::Execution.expects(:execute).with(['cmd.exe', '/c', 'netsh', 'winhttp', 'dump']).at_least_once.returns(
           Puppet::Util::Execution::ProcessOutput.new(output, 0)
         )
       end
@@ -203,9 +203,9 @@ popd
       EOS
 
       if Puppet::PUPPETVERSION.to_f < 3.4
-        Puppet::Util::SUIDManager.expects(:run_and_capture).with(['netsh', 'winhttp', 'dump']).at_least_once.returns([output, 0])
+        Puppet::Util::SUIDManager.expects(:run_and_capture).with(['cmd.exe', '/c', 'netsh', 'winhttp', 'dump']).at_least_once.returns([output, 0])
       else
-        Puppet::Util::Execution.expects(:execute).with(['netsh', 'winhttp', 'dump']).at_least_once.returns(
+        Puppet::Util::Execution.expects(:execute).with(['cmd.exe', '/c', 'netsh', 'winhttp', 'dump']).at_least_once.returns(
           Puppet::Util::Execution::ProcessOutput.new(output, 0)
         )
       end
