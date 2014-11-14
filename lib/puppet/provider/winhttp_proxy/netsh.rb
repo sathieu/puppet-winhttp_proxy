@@ -2,10 +2,11 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh, :parent => Puppet::Provider) d
   confine :operatingsystem => :windows
   defaultfor :operatingsystem => :windows
 
+  # Actually, Windows as different settings under 32-bit or 64-bit
+  # How can people pay for this crappy software?!
+  # FIXME Handle the WOW64 proxy too
   def self.netsh_command
-    if File.exists?("#{ENV['SYSTEMROOT']}\\SysWOW64\\netsh.exe")
-      "#{ENV['SYSTEMROOT']}\\SysWOW64\\netsh.exe"
-    elsif File.exists?("#{ENV['SYSTEMROOT']}\\System32\\netsh.exe")
+    if File.exists?("#{ENV['SYSTEMROOT']}\\System32\\netsh.exe")
       "#{ENV['SYSTEMROOT']}\\System32\\netsh.exe"
     else
       'netsh.exe'
