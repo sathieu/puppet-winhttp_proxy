@@ -40,14 +40,15 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh, :parent => Puppet::Provider) d
       end
       if context == [ 'winhttp' ] and line =~ /^reset proxy$/
         proxy = {
+          :name    => :proxy,
           'ensure' => :absent
         }
         next
       end
       if context == [ 'winhttp' ] and line =~ /^set proxy proxy-server="([^"]+)"( bypass-list="([^"]+)")?$/
         proxy = {
-          :name        => 'proxy',
-          :ensure      => :present,
+          :name         => :proxy,
+          :ensure       => :present,
           :proxy_server => $1,
           :bypass_list  => [],
         }
