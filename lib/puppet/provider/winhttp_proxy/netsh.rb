@@ -90,15 +90,17 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh) do
 
   # Keep resource properties, flush will actually apply
   def create
-    self.proxy_server=@resource[:proxy_server]
-    self.bypass_list=@resource[:bypass_list]
+    @property_hash = {
+      :ensure       => :present,
+      :proxy_server => @resource[:proxy_server],
+      :bypass_list  => @resource[:bypass_list]
+    }
   end
 
   # Unlike create we actually immediately delete the item.
   def destroy
     netsh('winhttp', 'reset', 'proxy')
-    self.proxy_server.clear
-    self.bypass_list.clear
+    @property_hash.clear
   end
 
   def flush
