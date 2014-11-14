@@ -12,6 +12,7 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh) do
     end
   end
 
+  initvars
   commands :netsh => netsh_command
 
   def self.instances
