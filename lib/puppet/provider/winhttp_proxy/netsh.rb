@@ -66,4 +66,26 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh) do
     end
     instances
   end
+
+  # Getters
+  def proxy_server
+    @property_hash[:proxy_server]
+  end
+  def bypass_list
+    @property_hash[:bypass_list]
+  end
+
+  # Setters
+  def proxy_server=(should)
+    @property_hash[:proxy_server] = should
+  end
+  def bypass_list=(should)
+    @property_hash[:bypass_list] = should
+  end
+
+  # Exists
+  def exists?
+    !(@property_hash[:ensure] == :absent or @property_hash.empty?)
+  end
+
 end
