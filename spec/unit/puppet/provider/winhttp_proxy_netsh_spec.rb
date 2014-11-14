@@ -43,6 +43,36 @@ popd
   end
 
   # =========================================================================
+  # No proxy -> simple proxy:
+  #   reset proxy -> set proxy proxy-server="localproxy:3128"
+  # =========================================================================
+  context 'no proxy -> simple proxy' do
+    let :resource do
+      Puppet::Type.type(:winhttp_proxy).new(
+        :name         => 'proxy',
+        :provider     => :netsh,
+        :proxy_server => 'localproxy:3128')
+    end
+
+    let :instance do
+      instance = described_class.new(resource)
+      instance.create
+      instance
+    end
+
+    it 'should create an instance' do
+      if Puppet::PUPPETVERSION.to_f < 3.4
+        Puppet::Util::SUIDManager.expects(:run_and_capture).with(['netsh', 'winhttp', 'set', 'proxy', 'proxy-server="localproxy:3128"', 'bypass-list=""']).once.returns(['', 0])
+      else
+        Puppet::Util::Execution.expects(:execute).with(['netsh', 'winhttp', 'set', 'proxy', 'proxy-server="localproxy:3128"', 'bypass-list=""']).once.returns(
+          Puppet::Util::Execution::ProcessOutput.new("", 0)
+        )
+      end
+      instance.flush
+    end
+  end
+
+  # =========================================================================
   # Simple proxy:
   #   set proxy proxy-server="myproxy:3128"
   # =========================================================================

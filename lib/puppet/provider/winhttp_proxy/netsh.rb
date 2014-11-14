@@ -88,4 +88,26 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh) do
     !(@property_hash[:ensure] == :absent or @property_hash.empty?)
   end
 
+  # Keep resource properties, flush will actually apply
+  def create
+    self.proxy_server=@resource[:proxy_server]
+    self.bypass_list=@resource[:bypass_list]
+  end
+
+  # Unlike create we actually immediately delete the item.
+  def destroy
+    netsh('winhttp', 'reset', 'proxy')
+    self.proxy_server.clear
+    self.bypass_list.clear
+  end
+
+  def flush
+    cmd = [ command(:netsh), 'winhttp', 'set', 'proxy', 'proxy-server="%s"' % @property_hash[:proxy_server], 'bypass-list="%s"' % @property_hash[:bypass_list] ]
+    if Puppet::PUPPETVERSION.to_f < 3.4
+      raw, status = Puppet::Util::SUIDManager.run_and_capture(cmd)
+    else
+      raw = Puppet::Util::Execution.execute(cmd)
+      status = raw.exitstatus
+    end
+  end
 end
