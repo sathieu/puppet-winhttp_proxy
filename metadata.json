@@ -7,6 +7,7 @@
   "source": "https://github.com/sathieu/puppet-winhttp_proxy/",
   "project_page": "https://github.com/sathieu/puppet-winhttp_proxy/",
   "issues_url": "https://github.com/sathieu/puppet-winhttp_proxy/issues",
+  "tags": ["windows", "proxy", "winhttp", "netsh"],
   "dependencies": [
   ],
   "operatingsystem_support": [
