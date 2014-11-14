@@ -56,7 +56,7 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh) do
         instances << proxy
         next
       end
-      warning("Unable to parse line #{line}")
+      Puppet.warning('Unable to parse line %s' % line)
     end
     instances
   end
