@@ -46,15 +46,15 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh, :parent => Puppet::Provider) d
       end
       if context == [ 'winhttp' ] and line =~ /^set proxy proxy-server="([^"]+)"( bypass-list="([^"]+)")?$/
         proxy = {
-          'name'          => 'proxy',
-          'ensure'        => :present,
-          'proxy_server'  => $1,
-          'bypass_list'   => [],
+          :name        => 'proxy',
+          :ensure      => :present,
+          :proxy_server => $1,
+          :bypass_list  => [],
         }
         if $3
-          proxy['bypass_list'] = $3.split(';')
+          proxy[:bypass_list] = $3.split(';')
         end
-        instances << proxy
+        instances << new(proxy)
         next
       end
       Puppet.warning('Unable to parse line %s' % line)
@@ -64,7 +64,7 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh, :parent => Puppet::Provider) d
 
   def self.prefetch(resources)
     instances.each do |instance|
-      if res = resources[instance['name']]
+      if res = resources[instance.name.to_s]
         res.provider = instance
       end
     end

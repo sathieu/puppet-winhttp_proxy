@@ -106,20 +106,20 @@ popd
       instances = described_class.instances
     end
 
-    it 'should have no instance' do
+    it 'should have one instance' do
       expect(instances.count).to eq(1)
     end
 
-    it 'instance should be present' do
-      expect(instances.first['ensure']).to eq(:present)
+    it 'instance should exists' do
+      expect(instances.first.exists?).to eq(true)
     end
 
     it 'instance should have correct proxy-server' do
-      expect(instances.first['proxy_server']).to eq('myproxy:3128')
+      expect(instances.first.proxy_server).to eq('myproxy:3128')
     end
 
     it 'instance should have correct bypass-list' do
-      expect(instances.first['bypass_list']).to eq([])
+      expect(instances.first.bypass_list).to eq([])
     end
 
   end
@@ -158,20 +158,20 @@ popd
       instances = described_class.instances
     end
 
-    it 'should have no instance' do
+    it 'should have one instance' do
       expect(instances.count).to eq(1)
     end
 
-    it 'instance should be present' do
-      expect(instances.first['ensure']).to eq(:present)
+    it 'instance should exists' do
+      expect(instances.first.exists?).to eq(true)
     end
 
     it 'instance should have correct proxy-server' do
-      expect(instances.first['proxy_server']).to eq('myproxy.example.org')
+      expect(instances.first.proxy_server).to eq('myproxy.example.org')
     end
 
     it 'instance should have correct bypass-list' do
-      expect(instances.first['bypass_list']).to eq([
+      expect(instances.first.bypass_list).to eq([
         '<local>',
         '*.example.org'
       ])
@@ -212,20 +212,20 @@ popd
       instances = described_class.instances
     end
 
-    it 'should have no instance' do
+    it 'should have one instance' do
       expect(instances.count).to eq(1)
     end
 
-    it 'instance should be present' do
-      expect(instances.first['ensure']).to eq(:present)
+    it 'instance should exists' do
+      expect(instances.first.exists?).to eq(true)
     end
 
     it 'instance should have correct proxy-server' do
-      expect(instances.first['proxy_server']).to eq('http=proxy.example.com;https=proxy.example.org')
+      expect(instances.first.proxy_server).to eq('http=proxy.example.com;https=proxy.example.org')
     end
 
     it 'instance should have correct bypass-list' do
-      expect(instances.first['bypass_list']).to eq([
+      expect(instances.first.bypass_list).to eq([
         '*.example.org',
         '*.example.com'
       ])
