@@ -63,10 +63,9 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh, :parent => Puppet::Provider) d
   end
 
   def self.prefetch(resources)
-    proxies = instances
-    resources.keys.each do |name|
-      if provider = proxies.find{ |proxy| proxy.name == name }
-        resources[name].provider = provider
+    instances.each do |instance|
+      if proxy = resources[instance.name]
+        proxy.provider = instance
       end
     end
   end
