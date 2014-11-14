@@ -1,4 +1,4 @@
-Puppet::Type.type(:winhttp_proxy).provide(:netsh) do
+Puppet::Type.type(:winhttp_proxy).provide(:netsh, :parent => Puppet::Provider) do
   confine :operatingsystem => :windows
   defaultfor :operatingsystem => :windows
 
