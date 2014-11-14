@@ -22,7 +22,7 @@ describe Puppet::Type.type(:winhttp_proxy) do
     expect(winhttp_proxy[:proxy_server]).to eq(proxy)
   end
   it 'should accept complex proxy_server' do
-    proxy = 'http=proxy.example.org:3128;https=proxy.example.com'
+    proxy = 'http=proxy-cluster.example.org:3128;https=proxy_ms.example.com'
     winhttp_proxy[:proxy_server] = proxy
     expect(winhttp_proxy[:proxy_server]).to eq(proxy)
   end

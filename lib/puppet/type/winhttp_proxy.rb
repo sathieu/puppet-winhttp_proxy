@@ -22,7 +22,7 @@ Puppet::Type.newtype(:winhttp_proxy) do
     * http=proxy.example.com;https=proxy.example.org}
     validate do |values|
       values.split(';').each do |value|
-        unless value =~ /^[a-z.=]+(:\d+)?$/
+        unless value =~ /^[=a-z._-]+(:\d+)?$/
           raise ArgumentError, "proxy_server item %s is invalid. Examples: 'myproxy', 'myproxy:80', 'http=proxy.example.com'" % value
         end
       end
@@ -37,7 +37,7 @@ Puppet::Type.newtype(:winhttp_proxy) do
     * ['*.foo.com']
     * ['<local>', 'example.org']}
     validate do |value|
-      unless value =~ /^[a-z.*]+$/ or value == "<local>"
+      unless value =~ /^[*a-z._-]+$/ or value == "<local>"
         raise ArgumentError, "bypass_list item %s is invalid. Examples: '*.foo.com', 'bar', '<local>'" % value
       end
     end
