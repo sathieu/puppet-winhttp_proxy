@@ -10,7 +10,7 @@ Puppet::Type.newtype(:winhttp_proxy) do
   newparam(:name) do
     desc %q{Resource name. Should be "proxy".}
     isnamevar
-    newvalues(:proxy)
+    newvalues('proxy')
   end
 
   newproperty(:proxy_server) do
