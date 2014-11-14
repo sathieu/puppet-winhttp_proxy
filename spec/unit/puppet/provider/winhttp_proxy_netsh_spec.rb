@@ -44,7 +44,7 @@ popd
 
   # =========================================================================
   # Simple proxy:
-  #   set proxy proxy-server="myproxy"
+  #   set proxy proxy-server="myproxy:3128"
   # =========================================================================
   context 'simple proxy' do
     let :instances do
@@ -151,7 +151,7 @@ popd
 
   # =========================================================================
   # Different HTTP and HTTPS proxies with bypass list:
-  #   set proxy proxy-server="myproxy.example.org" bypass-list="<local>;*.example.org"
+  #   set proxy proxy-server="http=proxy.example.com;https=proxy.example.org" bypass-list="*.example.org;*.example.com"
   # =========================================================================
   context 'simple proxy with bypass list' do
     let :instances do
