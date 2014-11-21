@@ -14,6 +14,8 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh, :parent => Puppet::Provider) d
   end
 
   initvars
+  mk_resource_methods
+
   commands :netsh => netsh_command
 
   def self.instances
@@ -66,22 +68,6 @@ Puppet::Type.type(:winhttp_proxy).provide(:netsh, :parent => Puppet::Provider) d
         proxy.provider = instance
       end
     end
-  end
-
-  # Getters
-  def proxy_server
-    @property_hash[:proxy_server]
-  end
-  def bypass_list
-    @property_hash[:bypass_list]
-  end
-
-  # Setters
-  def proxy_server=(should)
-    @property_hash[:proxy_server] = should
-  end
-  def bypass_list=(should)
-    @property_hash[:bypass_list] = should
   end
 
   # Exists
