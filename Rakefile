@@ -1,12 +1,8 @@
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint/tasks/puppet-lint'
 
-#Due to puppet-lint not ignoring tests folder or the ignore paths attribute
-#we have to ignore many things
-PuppetLint.configuration.ignore_paths = ["tests/*.pp","spec/**/*.pp","pkg/**/*.pp"]
+#Puppet lint configuration
 PuppetLint.configuration.send("disable_80chars")
-PuppetLint.configuration.send("disable_autoloader_layout")
-PuppetLint.configuration.send("disable_double_quoted_strings")
 
 task :default => [:test]
 
