@@ -37,7 +37,7 @@ Puppet::Type.newtype(:winhttp_proxy) do
     * ['*.foo.com']
     * ['<local>', 'example.org']}
     validate do |value|
-      unless value =~ /^[*a-z._-]+$/ or value == "<local>"
+      unless value =~ /^[*a-z0-9._-]+$/ or value == "<local>"
         raise ArgumentError, "bypass_list item %s is invalid. Examples: '*.foo.com', 'bar', '<local>'" % value
       end
     end
