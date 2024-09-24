@@ -55,7 +55,8 @@ Requires Windows >= 7 or Windows >= 2008 (netsh provider).
 
 ## Development
 
-As any github project, you can [read the source](https://github.com/sathieu/puppet-winhttp_proxy/),
-fork and report issues.
+PRs accepted :)
 
-[![Build Status](https://travis-ci.org/sathieu/puppet-winhttp_proxy.png?branch=master)](https://travis-ci.org/sathieu/puppet-winhttp_proxy)
+## Source
+This is a fork of https://github.com/sathieu/puppet-winhttp_proxy
+

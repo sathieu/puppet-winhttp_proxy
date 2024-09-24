@@ -1,19 +1,34 @@
 {
-  "name": "sathieu-winhttp_proxy",
-  "version": "0.2.0",
-  "author": "Mathieu Parent <math.parent@gmail.com>",
+  "name": "webalex-winhttp_proxy",
+  "version": "0.1.0",
+  "author": "webalex",
   "summary": "Manage Windows system proxy (i.e. WinHTTP Proxy) settings",
   "license": "Apache-2.0",
-  "source": "https://github.com/sathieu/puppet-winhttp_proxy/",
-  "project_page": "https://github.com/sathieu/puppet-winhttp_proxy/",
-  "issues_url": "https://github.com/sathieu/puppet-winhttp_proxy/issues",
-  "tags": ["windows", "proxy", "winhttp", "netsh"],
+  "source": "https://github.com/webalexeu/puppet-winhttp_proxy.git",
+  "project_page": "https://github.com/webalexeu/puppet-winhttp_proxy",
+  "issues_url": "https://github.com/webalexeu/puppet-winhttp_proxy/issues",
   "dependencies": [
+
   ],
   "operatingsystem_support": [
     {
-      "operatingsystem": "windows"
+      "operatingsystem": "Windows",
+      "operatingsystemrelease": [
+        "2016",
+        "2019",
+        "2022",
+        "10",
+        "11"
+      ]
     }
-  ]
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 6.0.0 < 7.0.0"
+    }
+  ],
+  "pdk-version": "3.3.0",
+  "template-url": "pdk-default#3.3.0",
+  "template-ref": "tags/3.3.0-0-g5d17ec1"
 }
-
