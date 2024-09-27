@@ -1,5 +1,9 @@
 # winhttp_proxy
 
+> ⚠️ This repository is not maintained ⚠️
+>
+> ⚠️ You can go to this fork: [webalexeu/puppet-winhttp_proxy](https://github.com/webalexeu/puppet-winhttp_proxy) ⚠️
+
 #### Table of Contents
 
 1. [Overview](#overview)
