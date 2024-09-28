@@ -49,7 +49,7 @@ winhttp_proxy { 'proxy':
 
 winhttp_proxy { 'proxy':
   proxy_server => 'http=proxy.example.com;https=proxy.example.org',
-  bypass_list  => '<local>;*.example.org;*.example.com'
+  bypass_list  => ['<local>', '*.example.org', '*.example.com']
 }
 ```
 
